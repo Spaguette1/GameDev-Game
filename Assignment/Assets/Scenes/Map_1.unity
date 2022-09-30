@@ -2026,6 +2026,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f627452e11f2ee349a18bd50dbba4b91, type: 3}
+--- !u!1 &95300169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1236625086002502, guid: f627452e11f2ee349a18bd50dbba4b91, type: 3}
+  m_PrefabInstance: {fileID: 95300168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &95300170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95300169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.26, y: -0.72, z: 0.37}
+  m_Center: {x: 0.11, y: 0, z: 0}
 --- !u!4 &95684328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4351516903975130, guid: 35cba3a52a8a7c44baa038f403ea2be5, type: 3}
@@ -30419,7 +30437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 491222, guid: fe9b7acf91fac014a92039797f726c80, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 491222, guid: fe9b7acf91fac014a92039797f726c80, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30470,6 +30488,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7802107861729991444, guid: 4707581494a4031438fbad227829f0db, type: 3}
+      propertyPath: m_Size.x
+      value: 7.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -7802107861729991444, guid: 4707581494a4031438fbad227829f0db, type: 3}
+      propertyPath: m_Size.y
+      value: 7.07
+      objectReference: {fileID: 0}
+    - target: {fileID: -7802107861729991444, guid: 4707581494a4031438fbad227829f0db, type: 3}
+      propertyPath: m_Size.z
+      value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: -7802107861729991444, guid: 4707581494a4031438fbad227829f0db, type: 3}
+      propertyPath: m_Center.x
+      value: 4.15
+      objectReference: {fileID: 0}
+    - target: {fileID: -7802107861729991444, guid: 4707581494a4031438fbad227829f0db, type: 3}
+      propertyPath: m_Center.y
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: -7802107861729991444, guid: 4707581494a4031438fbad227829f0db, type: 3}
+      propertyPath: m_Center.z
+      value: 0.84
+      objectReference: {fileID: 0}
     - target: {fileID: 135316, guid: 4707581494a4031438fbad227829f0db, type: 3}
       propertyPath: m_Name
       value: Scaffolding (1)
