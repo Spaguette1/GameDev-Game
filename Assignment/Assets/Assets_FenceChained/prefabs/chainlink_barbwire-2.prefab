@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011191699248}
   - component: {fileID: 205000012739437882}
+  - component: {fileID: -3491626578542889811}
   m_Layer: 0
   m_Name: chainlink_barbwire-2
   m_TagString: Untagged
@@ -223,3 +224,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 23000012580155032}
   m_Enabled: 1
+--- !u!65 &-3491626578542889811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013552450896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.67, y: 4.05, z: -0.15}
+  m_Center: {x: 0, y: 0, z: 0}
