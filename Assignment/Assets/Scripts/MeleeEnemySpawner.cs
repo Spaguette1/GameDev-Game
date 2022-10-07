@@ -32,6 +32,7 @@ public class MeleeEnemySpawner : MonoBehaviour
                 GameObject newEnemy = Instantiate(meleeEnemy, transform.position, transform.rotation);
                 newEnemy.transform.parent = meleeEnemySpawner.transform.parent;
                 spawnCounter += 1;
+                Debug.Log("spawned");
             }
 
         StartCoroutine(spawnEnemy(spawnerInterval, meleeEnemy));
@@ -40,5 +41,12 @@ public class MeleeEnemySpawner : MonoBehaviour
         
 
         
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, spawnDistanceMin);
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, spawnDistanceMax);
     }
 }
