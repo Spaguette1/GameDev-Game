@@ -25,7 +25,7 @@ public class MeleeEnemy : MonoBehaviour
     public float enemyHealth = 100.0f;
     public int damage = 10;
 
-    public float attackRange = 5.0f;
+    public float attackRange = 2.5f;
 
     private float timeInAttack;
 
@@ -79,9 +79,12 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     protected void UpdateAttackState() {
-        timeInAttack += Time.deltaTime;
+        enemy.SetDestination(transform.position); //stop the enemy from chasing
+
+        timeInAttack += Time.deltaTime; 
         if (timeInAttack >= 2.0f) {
             FPSController.GetComponent<FirstPersonController>().ApplyDamage(damage);
+            timeInAttack = 0f;
         }
     }
 
@@ -101,6 +104,11 @@ public class MeleeEnemy : MonoBehaviour
         enemyColour = Color.Lerp(Color.red, Color.green, number/100);
         
         gameObject.GetComponent<Renderer>().material.color = enemyColour;
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+		Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
 

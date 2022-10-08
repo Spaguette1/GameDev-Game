@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18827617, g: 0.19113809, b: 0.19109794, a: 1}
+  m_IndirectSpecularColor: {r: 0.1882762, g: 0.19113821, b: 0.19109797, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -46625,10 +46625,10 @@ MonoBehaviour:
   FPSController: {fileID: 1631609364}
   meleeEnemy: {fileID: 2106493438}
   meleeEnemySpawner: {fileID: 1532610290}
-  spawnerInterval: 2.5
+  spawnerInterval: 10
   spawnDistanceMin: 10
   spawnDistanceMax: 50
-  totalSpawns: 10
+  totalSpawns: 5
 --- !u!4 &1532610292
 Transform:
   m_ObjectHideFlags: 0
@@ -63737,6 +63737,7 @@ MonoBehaviour:
   FPSController: {fileID: 1631609364}
   GameKillCounter: {fileID: 1892001538}
   enemyHealth: 100
+  damage: 10
   attackRange: 5
 --- !u!136 &2106493441
 CapsuleCollider:
