@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.AI;
+using System.Collections;
+using System.Collections.Generic;
+
 
 #pragma warning disable 618, 649
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -43,8 +47,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        public float shootPower = 5000f;
+
+
+
+
         public GameObject bullet;
+
+        public float weaponDelay;
+        private float currentDelay;
+        public float shootPower;
+        public int bullets;
+        public float maxSpread = 0.1f;
+
+        public enum weaponState {
+            Pistol,
+            Shotgun,
+            Rifle
+        }
+
+        public weaponState currentWeaponState;
 
 
 
@@ -61,6 +82,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+            currentWeaponState = weaponState.Rifle;
         }
 
 
@@ -88,10 +111,40 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
+            if (currentDelay > 0) {
+                currentDelay -= Time.deltaTime;
+            }
+            else {
+                currentDelay = 0.0f;
+            }
 
-            if (Input.GetButtonUp("Fire1")) {
-                //Debug.Log("fire");
 
+
+            switch (currentWeaponState) {
+                case weaponState.Pistol:
+                    weaponDelay = 1.5f;
+                    shootPower = 2500f;
+                    bullets = 1;
+                    break;
+                case weaponState.Shotgun:
+                    weaponDelay = 2.5f;
+                    shootPower = 1500f;
+                    bullets = 9;
+                    break;
+                case weaponState.Rifle:
+                    weaponDelay = 0.15f;
+                    shootPower = 5000f;
+                    bullets = 1;
+                    break;
+            }
+
+
+
+
+
+
+            if (Input.GetButton("Fire1") && currentDelay == 0) {
+                
                 Vector3 playerPos = transform.position;
                 Transform cam = Camera.main.transform;
 
@@ -100,8 +153,27 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
                 Vector3 spawnPos = playerPos + direct*spawnDistance;
 
-                GameObject bulletInstance = Instantiate(bullet, spawnPos, transform.rotation);
-                bulletInstance.GetComponent<Rigidbody>().AddForce (direct * shootPower);
+                if (currentWeaponState == weaponState.Shotgun) {
+                    var i=0;
+                    while (i < bullets)
+                    {
+                        Vector3 spreadDirect = direct + new Vector3(Random.Range(-maxSpread, maxSpread), Random.Range(-maxSpread, maxSpread), Random.Range(-maxSpread, maxSpread));
+                        GameObject bulletInstance = Instantiate(bullet, spawnPos, transform.rotation);
+                        bulletInstance.GetComponent<Rigidbody>().AddForce (spreadDirect * shootPower);
+                        i++;
+                    }
+                }
+                else {
+                    GameObject bulletInstance = Instantiate(bullet, spawnPos, transform.rotation);
+                    bulletInstance.GetComponent<Rigidbody>().AddForce (direct * shootPower);
+                    Physics.IgnoreCollision(bulletInstance.GetComponent<Collider>(), GetComponent<Collider>(), true);
+                }
+
+
+                
+
+                currentDelay = weaponDelay;
+
             }
         }
 
