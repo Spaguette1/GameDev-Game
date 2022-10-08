@@ -43,6 +43,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public float shootPower = 1000f;
+        public GameObject bullet;
+
+
         // Use this for initialization
         private void Start()
         {
@@ -82,6 +86,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+
+            if (Input.GetButtonUp("Fire1")) {
+                //Debug.Log("fire");
+
+                Vector3 playerPos = transform.position;
+                Transform cam = Camera.main.transform;
+
+                Vector3 direct = cam.TransformDirection (Vector3.forward);
+                float spawnDistance = 2;
+                
+                Vector3 spawnPos = playerPos + direct*spawnDistance;
+
+                GameObject bulletInstance = Instantiate(bullet, spawnPos, transform.rotation);
+                bulletInstance.GetComponent<Rigidbody>().AddForce (direct * shootPower);
+            }
         }
 
 

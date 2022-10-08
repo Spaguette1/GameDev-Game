@@ -17,6 +17,8 @@ public class MeleeEnemy : MonoBehaviour
     public NavMeshAgent enemy;
     public GameObject FPSController;
 
+    public float enemyHealth = 100.0f;
+
     public float attackRange = 5.0f;
 
     // Start is called before the first frame update
@@ -32,7 +34,7 @@ public class MeleeEnemy : MonoBehaviour
 
         switch (curState)
         {
-            //case FSMState.Dead: UpdateDeadState(); break;
+            case FSMState.Dead: UpdateDeadState(); break;
             case FSMState.Chase: UpdateChaseState(); break;
             case FSMState.Attack: UpdateAttackState(); break;
         }
@@ -45,12 +47,18 @@ public class MeleeEnemy : MonoBehaviour
             //Debug.Log("attack");
             curState = FSMState.Attack;
         }
+        else if (enemyHealth <= 0) {
+            curState = FSMState.Dead;
+        }
         else {
             //chase range, switch to chase state
             //Debug.Log("chase");
             curState = FSMState.Chase;
             
         }
+
+        //mapping colour to health
+        SetColourbyHealthValue(enemyHealth);
     }
 
     protected void UpdateChaseState() {
@@ -62,4 +70,24 @@ public class MeleeEnemy : MonoBehaviour
     protected void UpdateAttackState() {
         //attack
     }
+
+    protected void UpdateDeadState() {
+        Destroy(this.gameObject);
+    }
+
+    public void ApplyDamage(int damage ) {
+    	enemyHealth -= damage;
+    }
+
+    private void SetColourbyHealthValue(float number) {
+
+        Color enemyColour;
+
+        enemyColour = Color.Lerp(Color.red, Color.green, number/100);
+        
+        gameObject.GetComponent<Renderer>().material.color = enemyColour;
+    }
 }
+
+
+
