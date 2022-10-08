@@ -47,6 +47,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public GameObject bullet;
 
 
+
         // Use this for initialization
         private void Start()
         {

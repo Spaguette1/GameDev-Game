@@ -9,7 +9,6 @@ public class bullet : MonoBehaviour
 
     public float lifeTime = 1.0f;
     public int damage = 20;
-    private float elapsedTime;
     private float temp;
     private GameObject enemyCollidedWith;
 
@@ -22,13 +21,12 @@ public class bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        elapsedTime = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-    
+        
     }
 
     void OnCollisionEnter(Collision col) {

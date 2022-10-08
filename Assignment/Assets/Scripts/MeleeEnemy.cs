@@ -7,6 +7,8 @@ public class MeleeEnemy : MonoBehaviour
 {
     //melee enemy always chases
 
+    
+
     public enum FSMState {
         Chase,
         Attack,
@@ -14,8 +16,10 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     public FSMState curState; 
+
     public NavMeshAgent enemy;
     public GameObject FPSController;
+    public GameObject GameKillCounter;
 
     public float enemyHealth = 100.0f;
 
@@ -73,6 +77,7 @@ public class MeleeEnemy : MonoBehaviour
 
     protected void UpdateDeadState() {
         Destroy(this.gameObject);
+        GameKillCounter.GetComponent<score>().IncreaseKillCount();
     }
 
     public void ApplyDamage(int damage ) {
