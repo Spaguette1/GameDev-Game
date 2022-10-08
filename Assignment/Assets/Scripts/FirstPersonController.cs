@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
+
 #pragma warning disable 618, 649
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -49,9 +50,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
 
-
+        //aditions
 
         public GameObject bullet;
+        public GameObject GameKillCounter;
+        public int playerHealth = 100;
+
 
         public float weaponDelay;
         private float currentDelay;
@@ -83,7 +87,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-            currentWeaponState = weaponState.Rifle;
+            currentWeaponState = weaponState.Pistol;
         }
 
 
@@ -120,7 +124,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
 
+            /* Checking the kill count of the player and changing the weapon state based on the kill
+            count. */
+            if (GameKillCounter.GetComponent<GameKills>().killCount < 5) {
+                currentWeaponState = weaponState.Pistol;
+            }
+            else if (GameKillCounter.GetComponent<GameKills>().killCount < 25) {
+                currentWeaponState = weaponState.Shotgun;
+            }
+            else {
+                currentWeaponState = weaponState.Rifle;
+            }
+            
+            
+            /* A switch statement that is changing the weaponDelay, shootPower, and bullets variables
+            based on the currentWeaponState. */
             switch (currentWeaponState) {
+
                 case weaponState.Pistol:
                     weaponDelay = 1.5f;
                     shootPower = 2500f;
@@ -136,13 +156,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     shootPower = 5000f;
                     bullets = 1;
                     break;
+
             }
 
-
-
-
-
-
+            /* Spawning a bullet in front of the player and adding force to it. */
             if (Input.GetButton("Fire1") && currentDelay == 0) {
                 
                 Vector3 playerPos = transform.position;
@@ -175,6 +192,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 currentDelay = weaponDelay;
 
             }
+        }
+
+        public void ApplyDamage(int damage) {
+            playerHealth -= damage;
         }
 
 

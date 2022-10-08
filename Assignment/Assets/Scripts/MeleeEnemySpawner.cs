@@ -8,10 +8,10 @@ public class MeleeEnemySpawner : MonoBehaviour
     public GameObject meleeEnemy;
     public GameObject meleeEnemySpawner;
 
-    public float spawnerInterval = 2.5f;
+    public float spawnerInterval = 7.5f;
     public float spawnDistanceMin = 25.0f;
     public float spawnDistanceMax = 150.0f;
-    public int totalSpawns = 10;
+    public int totalSpawns = 5;
 
     private float distanceToPlayer;
     private int spawnCounter = 0;

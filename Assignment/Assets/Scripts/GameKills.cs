@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class score : MonoBehaviour
+public class GameKills : MonoBehaviour
 {
 
     public int killCount;

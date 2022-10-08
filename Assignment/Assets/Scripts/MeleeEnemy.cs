@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class MeleeEnemy : MonoBehaviour
 {
@@ -22,8 +23,11 @@ public class MeleeEnemy : MonoBehaviour
     public GameObject GameKillCounter;
 
     public float enemyHealth = 100.0f;
+    public int damage = 10;
 
     public float attackRange = 5.0f;
+
+    private float timeInAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -46,12 +50,15 @@ public class MeleeEnemy : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, FPSController.transform.position);
 
-        if (distanceToPlayer < attackRange) {
+        if (distanceToPlayer < attackRange) { //ATTACK STATE
             //attack range, switch to attack state
             //Debug.Log("attack");
+            if (curState != FSMState.Attack) {
+                timeInAttack = 0f;
+            }
             curState = FSMState.Attack;
         }
-        else if (enemyHealth <= 0) {
+        else if (enemyHealth <= 0) { //DEAD STATE
             curState = FSMState.Dead;
         }
         else {
@@ -72,12 +79,15 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     protected void UpdateAttackState() {
-        //attack
+        timeInAttack += Time.deltaTime;
+        if (timeInAttack >= 2.0f) {
+            FPSController.GetComponent<FirstPersonController>().ApplyDamage(damage);
+        }
     }
 
     protected void UpdateDeadState() {
         Destroy(this.gameObject);
-        GameKillCounter.GetComponent<score>().IncreaseKillCount();
+        GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
     }
 
     public void ApplyDamage(int damage ) {
