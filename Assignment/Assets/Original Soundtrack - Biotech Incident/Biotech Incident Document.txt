@@ -1,0 +1,10 @@
+96000hz
+
+All files are inside the "Audio Files" folder
+
+Just drag them to the audio clip field in your project 
+You need to have a 'listener' in the scene, by default in Unity, your camera already serves this function.
+
+If you need any support please don't hesitate to contact me
+
+Thank you for your purchase and enjoy
