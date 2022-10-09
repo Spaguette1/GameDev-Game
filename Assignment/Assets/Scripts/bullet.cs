@@ -53,7 +53,10 @@ public class bullet : MonoBehaviour
         else if (col.collider.name == "FPSController") {
             col.collider.gameObject.GetComponent<FirstPersonController>().ApplyDamage(damage);
             Destroy(this.gameObject);
-
+        }
+        else if (col.collider.name == "EnemyBomber") {
+            col.collider.gameObject.GetComponent<EnemyBomber>().ApplyDamage(damage);
+            Destroy(this.gameObject);
         }
         else if (col.collider.name == "bullet(Clone)") {
             //do not destroy
