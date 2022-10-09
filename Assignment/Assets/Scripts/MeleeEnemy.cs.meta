@@ -3,7 +3,10 @@ guid: 7010b8065c9854e888232bd4f392300f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemy: {instanceID: 0}
+  - FPSController: {fileID: 100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+  - GameKillCounter: {fileID: 3506194563705290995, guid: fc61901820e434e1b9726ca1d17d7892, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

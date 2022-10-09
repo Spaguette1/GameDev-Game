@@ -87,7 +87,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-            currentWeaponState = weaponState.Pistol;
+            currentWeaponState = weaponState.Rifle;
         }
 
 
@@ -126,7 +126,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             /* Checking the kill count of the player and changing the weapon state based on the kill
             count. */
-            if (GameKillCounter.GetComponent<GameKills>().killCount < 5) {
+            if (GameKillCounter.GetComponent<GameKills>().killCount < 7) {
                 currentWeaponState = weaponState.Pistol;
             }
             else if (GameKillCounter.GetComponent<GameKills>().killCount < 25) {
@@ -165,7 +165,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Vector3 playerPos = transform.position;
                 Transform cam = Camera.main.transform;
 
-                Vector3 direct = cam.TransformDirection (Vector3.forward);
+                Vector3 direct = cam.TransformDirection(Vector3.forward);
                 float spawnDistance = 2;
                 
                 Vector3 spawnPos = playerPos + direct*spawnDistance;
