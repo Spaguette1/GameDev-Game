@@ -162,7 +162,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             /* Spawning a bullet in front of the player and adding force to it. */
             if (Input.GetButton("Fire1") && currentDelay == 0) {
                 
-                Vector3 playerPos = transform.position;
+                Vector3 playerPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
                 Transform cam = Camera.main.transform;
 
                 Vector3 direct = cam.TransformDirection(Vector3.forward);
