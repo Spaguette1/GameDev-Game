@@ -73,6 +73,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
 
+
         // Use this for initialization
         private void Start()
         {
@@ -124,17 +125,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
 
-            /* Checking the kill count of the player and changing the weapon state based on the kill
-            count. */
-            if (GameKillCounter.GetComponent<GameKills>().killCount < 7) {
-                currentWeaponState = weaponState.Pistol;
-            }
-            else if (GameKillCounter.GetComponent<GameKills>().killCount < 25) {
-                currentWeaponState = weaponState.Shotgun;
-            }
-            else {
-                currentWeaponState = weaponState.Rifle;
-            }
+            // /* Checking the kill count of the player and changing the weapon state based on the kill
+            // count. */
+            // if (GameKillCounter.GetComponent<GameKills>().killCount < 4) {
+            //     currentWeaponState = weaponState.Pistol;
+            // }
+            // else if (GameKillCounter.GetComponent<GameKills>().killCount < 10) {
+            //     currentWeaponState = weaponState.Shotgun;
+            // }
+            // else {
+            //     currentWeaponState = weaponState.Rifle;
+            // }
             
             
             /* A switch statement that is changing the weaponDelay, shootPower, and bullets variables
@@ -148,12 +149,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     break;
                 case weaponState.Shotgun:
                     weaponDelay = 2.5f;
-                    shootPower = 1500f;
+                    shootPower = 1000f;
                     bullets = 9;
                     break;
                 case weaponState.Rifle:
                     weaponDelay = 0.15f;
-                    shootPower = 5000f;
+                    shootPower = 4000f;
                     bullets = 1;
                     break;
 

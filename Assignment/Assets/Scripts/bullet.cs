@@ -10,7 +10,7 @@ public class bullet : MonoBehaviour
 {
 
     public float lifeTime = 10f;
-    public int damage = 20;
+    public int damage = 50;
     private float temp;
     public GameObject bulletInst;
 
@@ -40,7 +40,7 @@ public class bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision col) {
 
-        Debug.Log(col.collider.name);
+        //Debug.Log(col.collider.name);
 
         if (col.collider.name == "MeleeEnemy(Clone)") {
             col.collider.gameObject.GetComponent<MeleeEnemy>().ApplyDamage(damage);
@@ -57,6 +57,10 @@ public class bullet : MonoBehaviour
         }
         else if (col.collider.name == "bullet(Clone)") {
             //do not destroy
+        }
+        else if (col.collider.name == "BossEnemy") {
+            col.collider.gameObject.GetComponent<BossEnemy>().ApplyDamage(damage);
+            Destroy(this.gameObject);
         }
         else {
             Destroy(this.gameObject);
