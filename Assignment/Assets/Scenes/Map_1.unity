@@ -51074,7 +51074,7 @@ PrefabInstance:
       objectReference: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_RunSpeed
-      value: 40
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: shootPower
