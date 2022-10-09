@@ -172,8 +172,8 @@ public class RangedEnemy : MonoBehaviour
         gameObject.GetComponent<Renderer>().material.color = enemyColour;
     }
 
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
+    // private void OnDrawGizmos() {
+    //     Gizmos.color = Color.yellow;
+	// 	Gizmos.DrawWireSphere(transform.position, attackRange);
+    // }
 }
