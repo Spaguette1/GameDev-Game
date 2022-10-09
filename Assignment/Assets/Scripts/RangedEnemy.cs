@@ -35,6 +35,7 @@ public class RangedEnemy : MonoBehaviour
 
     public float shootRate = 1.0f;
     public float shootPower;
+    private Animator animator;
 
 
 
@@ -52,11 +53,13 @@ public class RangedEnemy : MonoBehaviour
             curState = FSMState.None;
         }
         nav = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
 
         currentDestination = 0;
 
         playerTransform = FPSController.transform;
-        elapsedTime = 0.0f;        
+        elapsedTime = 0.0f;
+
     }
 
     // Update is called once per frame
@@ -65,6 +68,7 @@ public class RangedEnemy : MonoBehaviour
         switch (curState) {
             case FSMState.Patrol: 
                 UpdatePatrolState(); 
+
                 //Debug.Log("patrol");
             break;
             case FSMState.Attack: 
@@ -113,11 +117,14 @@ public class RangedEnemy : MonoBehaviour
         }
 
         if (Vector3.Distance(transform.position, playerTransform.position) <= attackRange) {
+            animator.SetBool("Aware", true);
             curState = FSMState.Attack;
+            
         }
     }
 
     protected void UpdateAttackState() {
+        
         nav.isStopped = true;
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = playerTransform.position;
@@ -140,14 +147,19 @@ public class RangedEnemy : MonoBehaviour
         if (!stationary) {
             if (Vector3.Distance(transform.position, playerTransform.position) > attackRange) {
                 nav.isStopped = false;
+                animator.SetBool("Aware", false);
                 curState = FSMState.Patrol;
+                
+
+
             }
         }
         
     }
 
     protected void UpdateDeadState() {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+        animator.SetBool("Isdead", true);
         GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
     }
 
