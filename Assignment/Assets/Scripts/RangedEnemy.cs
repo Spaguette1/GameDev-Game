@@ -56,10 +56,7 @@ public class RangedEnemy : MonoBehaviour
         currentDestination = 0;
 
         playerTransform = FPSController.transform;
-        elapsedTime = 0.0f;
-
-        shootPower = 3000.0f;
-        
+        elapsedTime = 0.0f;        
     }
 
     // Update is called once per frame
