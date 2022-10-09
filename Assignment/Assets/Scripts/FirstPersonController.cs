@@ -88,7 +88,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-            currentWeaponState = weaponState.Rifle;
+            currentWeaponState = weaponState.Pistol;
         }
 
 
@@ -125,17 +125,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
 
-            // /* Checking the kill count of the player and changing the weapon state based on the kill
-            // count. */
-            // if (GameKillCounter.GetComponent<GameKills>().killCount < 4) {
-            //     currentWeaponState = weaponState.Pistol;
-            // }
-            // else if (GameKillCounter.GetComponent<GameKills>().killCount < 10) {
-            //     currentWeaponState = weaponState.Shotgun;
-            // }
-            // else {
-            //     currentWeaponState = weaponState.Rifle;
-            // }
+            /* Checking the kill count of the player and changing the weapon state based on the kill
+            count. */
+            if (GameKillCounter.GetComponent<GameKills>().killCount < 4) {
+                currentWeaponState = weaponState.Pistol;
+            }
+            else if (GameKillCounter.GetComponent<GameKills>().killCount < 10) {
+                currentWeaponState = weaponState.Shotgun;
+            }
+            else {
+                currentWeaponState = weaponState.Rifle;
+            }
             
             
             /* A switch statement that is changing the weaponDelay, shootPower, and bullets variables
