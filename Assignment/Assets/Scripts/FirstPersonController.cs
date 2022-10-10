@@ -233,7 +233,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 ApplyDamage(20);
             }
 
-            if (currentHealth == 0)
+            if (currentHealth <= 0)
             {
                 PauseMenu.GameIsPaused = true;
 
