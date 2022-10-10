@@ -21,11 +21,12 @@ public class MeleeEnemy : MonoBehaviour
     public NavMeshAgent enemy;
     public GameObject FPSController;
     public GameObject GameKillCounter;
+    private Animator animator;
 
     public float enemyHealth = 100.0f;
     public int damage = 10;
 
-    public float attackRange = 2.5f;
+    public float attackRange = 1f;
 
     private float timeInAttack;
 
@@ -34,6 +35,8 @@ public class MeleeEnemy : MonoBehaviour
     {
         enemy.GetComponent<NavMeshAgent>();
         curState = FSMState.Chase; //initial state
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame
@@ -79,17 +82,25 @@ public class MeleeEnemy : MonoBehaviour
     }
 
     protected void UpdateAttackState() {
+        float distanceToPlayer = Vector3.Distance(transform.position, FPSController.transform.position);
         enemy.SetDestination(transform.position); //stop the enemy from chasing
-
+        animator.SetBool("Attack", true);
         timeInAttack += Time.deltaTime; 
         if (timeInAttack >= 2.0f) {
             FPSController.GetComponent<FirstPersonController>().ApplyDamage(damage);
             timeInAttack = 0f;
+
+        }
+        if (distanceToPlayer > attackRange)
+        {
+            curState = FSMState.Chase;
+            animator.SetBool("Attack", false);
         }
     }
 
     protected void UpdateDeadState() {
-        Destroy(this.gameObject);
+
+        animator.SetTrigger("Dead");
         GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
 
         FPSController.transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
@@ -97,6 +108,7 @@ public class MeleeEnemy : MonoBehaviour
 
     public void ApplyDamage(int damage ) {
     	enemyHealth -= damage;
+       
     }
 
     private void SetColourbyHealthValue(float number) {
