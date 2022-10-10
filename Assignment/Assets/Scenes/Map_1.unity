@@ -58410,7 +58410,7 @@ GameObject:
   - component: {fileID: 1661977964}
   - component: {fileID: 1661977963}
   m_Layer: 6
-  m_Name: Heart
+  m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58433,8 +58433,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -5.300049, y: 8.7516}
-  m_SizeDelta: {x: 101.9115, y: 94.0721}
+  m_AnchoredPosition: {x: -44, y: 17}
+  m_SizeDelta: {x: 126.55, y: 176.288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661977963
 MonoBehaviour:
@@ -58456,7 +58456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a8e023b5e66b0d478386a07d1627765, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58bed9bb2f5d0ea43b9ccb91ee264178, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -59574,7 +59574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -663, y: 479.57}
+  m_AnchoredPosition: {x: -595, y: 423}
   m_SizeDelta: {x: 479.9926, y: 76.569}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696969970
@@ -70964,7 +70964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 672.6609, y: 479.57}
+  m_AnchoredPosition: {x: 657, y: 423}
   m_SizeDelta: {x: 543.3219, y: 98.7146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &2010656450 stripped
