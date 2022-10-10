@@ -9,18 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c5860a90e7bd2504797f4e4f44b79848
   - enabled: 1
-    path: Assets/Scenes/Settings.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/CreditScreen.unity
+    guid: d3f4671dd7cd70948a451f80fade38f5
   - enabled: 1
     path: Assets/Scenes/Map_1.unity
     guid: 3ebf7b68e5ac324438ad203d50cb9721
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 64dd054f028c1364697406bb2a2975ba
-  - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: 2dac2485463de124ebdc4490d7c3ce58
-  - enabled: 1
-    path: Assets/Scenes/CreditScreen.unity
-    guid: d3f4671dd7cd70948a451f80fade38f5
   m_configObjects: {}

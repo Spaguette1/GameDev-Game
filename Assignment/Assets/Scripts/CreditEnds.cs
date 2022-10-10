@@ -22,7 +22,7 @@ public class CreditEnds : MonoBehaviour
 
     IEnumerator waiter()
     {
-        yield return new WaitForSeconds (31);
+        yield return new WaitForSecondsRealtime (31);
         SceneManager.LoadScene("MainMenu");
     }
 }

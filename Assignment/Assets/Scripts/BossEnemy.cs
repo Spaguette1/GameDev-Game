@@ -28,7 +28,7 @@ public class BossEnemy : MonoBehaviour
 
     public NavMeshAgent boss;
 
-    public int bossHealth = 5000;
+    public int bossHealth = 1000;
 
     public int damage = 1;
     public float damageDelay = 0.2f;

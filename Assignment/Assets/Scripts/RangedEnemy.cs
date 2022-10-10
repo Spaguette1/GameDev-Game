@@ -22,7 +22,7 @@ public class RangedEnemy : MonoBehaviour
     private NavMeshAgent nav;
     private int currentDestination;
 
-    public float attackRange = 20.0f;
+    public float attackRange = 20f;
 
     public float enemyHealth = 100.0f;
 

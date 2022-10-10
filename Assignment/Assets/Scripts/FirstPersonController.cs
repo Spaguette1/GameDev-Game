@@ -228,15 +228,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 currentDelay = weaponDelay;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ApplyDamage(20);
-            }
-
             if (currentHealth <= 0)
             {
                 PauseMenu.GameIsPaused = true;
-
                 Time.timeScale = 0f;
                 currentHealth = 100;
                 Cursor.visible = true;
