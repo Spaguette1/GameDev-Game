@@ -13,7 +13,9 @@ public class MainMenu : MonoBehaviour
         if (PauseMenu.GameIsPaused) 
         {
             PauseMenu.GameIsPaused = false;
+            
         }
+        
     }
 
     public void QuitGame()

@@ -7,6 +7,7 @@ using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -64,6 +65,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public GameObject shotgunUI;
         public GameObject rifleUI;
 
+        public GameObject deathMenuUI;
+
         private int killCount = 0;
         public Text killCountText;
 
@@ -105,10 +108,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             healthBar.SetMaxHealth(maxHealth);
         }
 
-
         // Update is called once per frame
         private void Update()
         {
+
+            if (PauseMenu.GameIsPaused == true)
+            {
+                return;
+            }
+
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -220,16 +229,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    ApplyDamage(20);
-                }
-            
+            {
+                ApplyDamage(20);
+            }
+
+            if (currentHealth == 0)
+            {
+                PauseMenu.GameIsPaused = true;
+
+                Time.timeScale = 0f;
+                currentHealth = 100;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
+                deathMenuUI.SetActive(true);
+            }
 
         }
 
         public void ApplyDamage(int damage) {
             currentHealth -= damage;
-
             healthBar.setHealth(currentHealth);
         }
 
@@ -334,6 +352,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
+        
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
