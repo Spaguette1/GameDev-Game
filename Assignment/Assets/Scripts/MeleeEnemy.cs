@@ -91,6 +91,8 @@ public class MeleeEnemy : MonoBehaviour
     protected void UpdateDeadState() {
         Destroy(this.gameObject);
         GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
+
+        FPSController.transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
     }
 
     public void ApplyDamage(int damage ) {

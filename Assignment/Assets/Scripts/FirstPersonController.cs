@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 
@@ -54,7 +55,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public GameObject bullet;
         public GameObject GameKillCounter;
-        public int playerHealth = 100;
+
+        public HealthBar healthBar;
+        public int maxHealth = 100;
+        public int currentHealth;
+
+        public GameObject pistolUI;
+        public GameObject shotgunUI;
+        public GameObject rifleUI;
+
+        private int killCount = 0;
+        public Text killCountText;
 
 
         public float weaponDelay;
@@ -89,6 +100,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
 
             currentWeaponState = weaponState.Pistol;
+
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
         }
 
 
@@ -129,12 +143,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
             count. */
             if (GameKillCounter.GetComponent<GameKills>().killCount < 4) {
                 currentWeaponState = weaponState.Pistol;
+
+                pistolUI.SetActive(true);
+                shotgunUI.SetActive(false);
+                rifleUI.SetActive(false);
             }
             else if (GameKillCounter.GetComponent<GameKills>().killCount < 10) {
                 currentWeaponState = weaponState.Shotgun;
+
+                pistolUI.SetActive(false);
+                shotgunUI.SetActive(true);
+                rifleUI.SetActive(false);
             }
             else {
                 currentWeaponState = weaponState.Rifle;
+
+                pistolUI.SetActive(false);
+                shotgunUI.SetActive(false);
+                rifleUI.SetActive(true);
             }
             
             
@@ -191,13 +217,28 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 
 
                 currentDelay = weaponDelay;
-
             }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    ApplyDamage(20);
+                }
+            
+
         }
 
         public void ApplyDamage(int damage) {
-            playerHealth -= damage;
+            currentHealth -= damage;
+
+            healthBar.setHealth(currentHealth);
         }
+
+        // Increment Score
+	    public void UpdatekillCount(int addkillCount) {
+		killCount = killCount + addkillCount;
+		// update the GUI score here
+		killCountText.text = "Kill Count:" + " " + killCount.ToString();
+	    }
 
 
         private void PlayLandingSound()
@@ -372,4 +413,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
     }
+
+    
 }

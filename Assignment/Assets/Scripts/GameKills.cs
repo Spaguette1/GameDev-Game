@@ -9,5 +9,6 @@ public class GameKills : MonoBehaviour
 
     public void IncreaseKillCount() {
         killCount++;
+
     }
 }

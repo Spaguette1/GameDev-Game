@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     
     public void PlayGame() 
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Map_1");
         
         if (PauseMenu.GameIsPaused) 
         {
