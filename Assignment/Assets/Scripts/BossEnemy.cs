@@ -179,6 +179,8 @@ public class BossEnemy : MonoBehaviour
 
     protected void UpdateDeadState() {
         Destroy(this.gameObject);
+
+        transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
     }
 
     private void OnDrawGizmos() {

@@ -96,6 +96,8 @@ public class EnemyBomber : MonoBehaviour
                 }
             }
             Destroy(this.gameObject);
+            
+            FPSController.transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
         }
     }
 
