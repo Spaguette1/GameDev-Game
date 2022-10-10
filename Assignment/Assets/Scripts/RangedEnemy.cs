@@ -175,7 +175,7 @@ public class RangedEnemy : MonoBehaviour
 
     public void ApplyDamage(int damage ) {
     	enemyHealth -= damage;
-        animator.SetTrigger("TakeDamage");
+        animator.SetBool("TakeDamage", true);
     }
 
     private void SetColourbyHealthValue(float number) {
