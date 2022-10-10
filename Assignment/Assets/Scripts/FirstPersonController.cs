@@ -247,7 +247,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
         public void ApplyDamage(int damage) {
-            //currentHealth -= damage;
+            currentHealth -= damage;
             healthBar.setHealth(currentHealth);
         }
 
