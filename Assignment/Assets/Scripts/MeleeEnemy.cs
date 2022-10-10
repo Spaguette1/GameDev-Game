@@ -16,7 +16,8 @@ public class MeleeEnemy : MonoBehaviour
         Dead
     }
 
-    public FSMState curState; 
+    public FSMState curState;
+    private Animator animator;
 
     public NavMeshAgent enemy;
     public GameObject FPSController;
@@ -25,7 +26,7 @@ public class MeleeEnemy : MonoBehaviour
     public float enemyHealth = 100.0f;
     public int damage = 10;
 
-    public float attackRange = 2.5f;
+    public float attackRange = 2.0f;
 
     private float timeInAttack;
 
@@ -34,6 +35,8 @@ public class MeleeEnemy : MonoBehaviour
     {
         enemy.GetComponent<NavMeshAgent>();
         curState = FSMState.Chase; //initial state
+        animator = GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame
@@ -65,6 +68,7 @@ public class MeleeEnemy : MonoBehaviour
             //chase range, switch to chase state
             //Debug.Log("chase");
             curState = FSMState.Chase;
+        
             
         }
 
@@ -76,25 +80,38 @@ public class MeleeEnemy : MonoBehaviour
         Vector3 dirToPlayer = transform.position - FPSController.transform.position;
         Vector3 newPos = transform.position - dirToPlayer;
         enemy.SetDestination(newPos);
+        animator.SetBool("attack", false);
     }
 
     protected void UpdateAttackState() {
         enemy.SetDestination(transform.position); //stop the enemy from chasing
+        float distanceToPlayer = Vector3.Distance(transform.position, FPSController.transform.position);
 
         timeInAttack += Time.deltaTime; 
-        if (timeInAttack >= 2.0f) {
+        if (timeInAttack >= 0.2f) {
             FPSController.GetComponent<FirstPersonController>().ApplyDamage(damage);
             timeInAttack = 0f;
+            animator.SetBool("attack", true);
+            if (distanceToPlayer > attackRange)
+            {
+                ;
+                curState = FSMState.Chase;
+
+            }
+
         }
     }
 
     protected void UpdateDeadState() {
-        Destroy(this.gameObject);
         GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
+        animator.SetBool("Isdead", true);
+
     }
 
     public void ApplyDamage(int damage ) {
     	enemyHealth -= damage;
+        animator.SetTrigger("Hit");
+
     }
 
     private void SetColourbyHealthValue(float number) {
