@@ -10236,7 +10236,7 @@ MonoBehaviour:
   GameKillCounter: {fileID: 1892001538}
   bullet: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
   shootRate: 1
-  shootPower: 0
+  shootPower: 2000
 --- !u!1001 &309009088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18427,7 +18427,7 @@ MonoBehaviour:
   GameKillCounter: {fileID: 1892001538}
   bullet: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
   shootRate: 1
-  shootPower: 0
+  shootPower: 2000
 --- !u!1 &566571286
 GameObject:
   m_ObjectHideFlags: 0
@@ -21853,6 +21853,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 472558, guid: 6b6783c1f0eff8c4ab3f3429bb89bd7f, type: 3}
   m_PrefabInstance: {fileID: 798587689}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &670093242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: ff3e8c3aad864db4394551f29cc6f224, type: 3}
+  m_PrefabInstance: {fileID: 1265210125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &670093246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670093242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e28570b7a1914d7aaa4fe51583f3b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &670093247
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670093242}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 548.8625
+  m_Center: {x: 0, y: 246.12625, z: -263.1855}
 --- !u!1 &673286417
 GameObject:
   m_ObjectHideFlags: 0
@@ -39424,7 +39454,7 @@ MonoBehaviour:
   GameKillCounter: {fileID: 1892001538}
   bullet: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
   shootRate: 1
-  shootPower: 0
+  shootPower: 2000
 --- !u!195 &1167784379
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -50089,7 +50119,7 @@ MonoBehaviour:
   GameKillCounter: {fileID: 1892001538}
   bullet: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
   shootRate: 1
-  shootPower: 0
+  shootPower: 2000
 --- !u!1001 &1434697835
 PrefabInstance:
   m_ObjectHideFlags: 0
