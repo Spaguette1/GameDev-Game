@@ -159,7 +159,7 @@ public class RangedEnemy : MonoBehaviour
 
     protected void UpdateDeadState() {
         //Destroy(this.gameObject);
-        animator.SetBool("Isdead", true);
+        Destroy(this.gameObject);
         GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
 
         FPSController.transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );

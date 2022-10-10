@@ -98,9 +98,11 @@ public class MeleeEnemy : MonoBehaviour
         }
     }
 
+
     protected void UpdateDeadState() {
 
-        animator.SetTrigger("Dead");
+       
+        Destroy(this.gameObject);
         GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
 
         FPSController.transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
