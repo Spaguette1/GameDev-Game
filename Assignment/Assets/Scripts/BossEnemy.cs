@@ -13,6 +13,7 @@ public class BossEnemy : MonoBehaviour
     public float activateChaseRange;
     public float activateAttackRange;
     public GameObject bullet;
+    public GameObject GameKillCounter;
 
 
 
@@ -28,7 +29,7 @@ public class BossEnemy : MonoBehaviour
 
     public NavMeshAgent boss;
 
-    public int bossHealth = 1000;
+    public int bossHealth = 600;
 
     public int damage = 1;
     public float damageDelay = 0.2f;
@@ -73,7 +74,7 @@ public class BossEnemy : MonoBehaviour
         }
 
         //activate frenzy mode if under half health
-        if (bossHealth < 2500) {
+        if (bossHealth < 300) {
             curState = FSMState.Frenzy;
         }
 
@@ -173,14 +174,18 @@ public class BossEnemy : MonoBehaviour
 
             
         }
+
+        if (bossHealth <= 0) {
+            curState = FSMState.Dead;
+        }
         
 
     }
 
     protected void UpdateDeadState() {
         Destroy(this.gameObject);
-
-        transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
+        GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
+        player.transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
     }
 
     private void OnDrawGizmos() {
@@ -194,7 +199,7 @@ public class BossEnemy : MonoBehaviour
 
         Color enemyColour;
 
-        enemyColour = Color.Lerp(Color.red, Color.green, number/5000);
+        enemyColour = Color.Lerp(Color.red, Color.green, number/600);
         
         gameObject.GetComponent<Renderer>().material.color = enemyColour;
     }

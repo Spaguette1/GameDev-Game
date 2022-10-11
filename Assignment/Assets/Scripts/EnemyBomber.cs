@@ -95,8 +95,10 @@ public class EnemyBomber : MonoBehaviour
                     FPSController.GetComponent<FirstPersonController>().ApplyDamage(damage);
                 }
             }
+
+
             Destroy(this.gameObject);
-            
+            GameKillCounter.GetComponent<GameKills>().IncreaseKillCount();
             FPSController.transform.gameObject.SendMessage("UpdatekillCount", (int) 1 );
         }
     }

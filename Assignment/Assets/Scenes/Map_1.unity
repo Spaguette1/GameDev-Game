@@ -10386,7 +10386,7 @@ MonoBehaviour:
   wayPointList:
   - {fileID: 1219026628}
   - {fileID: 2071850156}
-  attackRange: 73.73
+  attackRange: 20
   enemyHealth: 100
   FPSController: {fileID: 1631609364}
   GameKillCounter: {fileID: 1892001538}
@@ -18764,7 +18764,7 @@ MonoBehaviour:
   wayPointList:
   - {fileID: 1219026628}
   - {fileID: 2071850156}
-  attackRange: 73.73
+  attackRange: 20
   enemyHealth: 100
   FPSController: {fileID: 1631609364}
   GameKillCounter: {fileID: 1892001538}
@@ -38515,9 +38515,10 @@ MonoBehaviour:
   activateChaseRange: 15
   activateAttackRange: 8
   bullet: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
+  GameKillCounter: {fileID: 1892001538}
   curState: 0
   boss: {fileID: 1142427356}
-  bossHealth: 5000
+  bossHealth: 600
   damage: 50
   damageDelay: 0.2
   shootPower: 1000
@@ -39947,7 +39948,7 @@ MonoBehaviour:
   wayPointList:
   - {fileID: 1219026628}
   - {fileID: 2071850156}
-  attackRange: 73.73
+  attackRange: 20
   enemyHealth: 100
   FPSController: {fileID: 1631609364}
   GameKillCounter: {fileID: 1892001538}
@@ -50612,7 +50613,7 @@ MonoBehaviour:
   wayPointList:
   - {fileID: 1219026628}
   - {fileID: 2071850156}
-  attackRange: 73.73
+  attackRange: 20
   enemyHealth: 100
   FPSController: {fileID: 1631609364}
   GameKillCounter: {fileID: 1892001538}
