@@ -3390,7 +3390,7 @@ MonoBehaviour:
   GameKillCounter: {fileID: 1892001538}
   bullet: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
   shootRate: 1
-  shootPower: 0
+  shootPower: 4000
 --- !u!1001 &90864852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16740,7 +16740,7 @@ MonoBehaviour:
   GameKillCounter: {fileID: 1892001538}
   bullet: {fileID: 2343176465182811859, guid: a71d3cbe59e0d4a9f8e2b2df03c88550, type: 3}
   shootRate: 1
-  shootPower: 0
+  shootPower: 4000
 --- !u!195 &491044262
 NavMeshAgent:
   m_ObjectHideFlags: 0
